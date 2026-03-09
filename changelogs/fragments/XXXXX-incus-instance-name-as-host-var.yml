@@ -1,0 +1,2 @@
+minor_changes:
+  - incus inventory plugin - add original instance name to inventory host vars (https://github.com/ansible-collections/community.general/pull/XXXXX).

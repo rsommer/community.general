@@ -179,6 +179,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable):
                     host_vars = {}
                     host_vars["ansible_incus_remote"] = remote_name
                     host_vars["ansible_incus_project"] = project
+                    host_vars["ansible_incus_instance"] = instance["name"]
 
                     for prop in (
                         "architecture",

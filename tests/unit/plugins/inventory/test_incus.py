@@ -114,22 +114,28 @@ def test_build_inventory(inventory, mocker):
     c1 = inventory.inventory.get_host("c1.default.r1.example.net")
     assert c1
     assert "ansible_incus_status" in c1.get_vars()
+    assert "ansible_incus_instance" in c1.get_vars()
+    assert c1.get_vars().get("ansible_incus_instance") == "c1"
 
     c2 = inventory.inventory.get_host("c2.foo.r2.example.net")
     assert c2
     assert "ansible_incus_status" in c2.get_vars()
+    assert c2.get_vars().get("ansible_incus_instance") == "c2"
 
     c3 = inventory.inventory.get_host("c3.proj1.r3.example.net")
     assert c3
     assert "ansible_incus_status" in c3.get_vars()
+    assert c3.get_vars().get("ansible_incus_instance") == "c3"
 
     c4 = inventory.inventory.get_host("c4.proj2.r3.example.net")
     assert c4
     assert "ansible_incus_status" in c4.get_vars()
+    assert c4.get_vars().get("ansible_incus_instance") == "c4"
 
     c5 = inventory.inventory.get_host("c5.proj2.r3.example.net")
     assert c5
     assert "ansible_incus_status" in c5.get_vars()
+    assert c5.get_vars().get("ansible_incus_instance") == "c5"
 
     assert len(inventory.inventory.groups["all"].hosts) == 5
     assert len(inventory.inventory.groups["incus"].child_groups) == 3
@@ -157,22 +163,27 @@ def test_build_inventory_fqdn_from_host_domain(inventory, mocker):
     c1 = inventory.inventory.get_host("c1.example.net")
     assert c1
     assert "ansible_incus_status" in c1.get_vars()
+    assert c1.get_vars().get("ansible_incus_instance") == "c1"
 
     c2 = inventory.inventory.get_host("c2.example.net")
     assert c2
     assert "ansible_incus_status" in c2.get_vars()
+    assert c2.get_vars().get("ansible_incus_instance") == "c2"
 
     c3 = inventory.inventory.get_host("c3.example.net")
     assert c3
     assert "ansible_incus_status" in c3.get_vars()
+    assert c3.get_vars().get("ansible_incus_instance") == "c3"
 
     c4 = inventory.inventory.get_host("c4.example.net")
     assert c4
     assert "ansible_incus_status" in c4.get_vars()
+    assert c4.get_vars().get("ansible_incus_instance") == "c4"
 
     c5 = inventory.inventory.get_host("c5.example.net")
     assert c5
     assert "ansible_incus_status" in c5.get_vars()
+    assert c5.get_vars().get("ansible_incus_instance") == "c5"
 
     assert len(inventory.inventory.groups["all"].hosts) == 5
     assert len(inventory.inventory.groups["incus"].child_groups) == 3
